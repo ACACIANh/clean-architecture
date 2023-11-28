@@ -34,6 +34,8 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
     implementation("com.google.code.gson:gson:2.8.9")
 
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit' // excluding junit 4
     }

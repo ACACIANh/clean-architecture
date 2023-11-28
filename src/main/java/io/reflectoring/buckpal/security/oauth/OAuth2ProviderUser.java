@@ -1,9 +1,9 @@
 package io.reflectoring.buckpal.security.oauth;
 
 import com.google.gson.Gson;
-import io.reflectoring.buckpal.security.domain.KakaoUser;
-import io.reflectoring.buckpal.security.domain.KakaoUser.KakaoAccount;
-import io.reflectoring.buckpal.security.domain.UserJpaEntity;
+import io.reflectoring.buckpal.security.domain.KakaoUserInfo;
+import io.reflectoring.buckpal.security.domain.KakaoUserInfo.KakaoAccount;
+import io.reflectoring.buckpal.security.domain.SecurityUserJpaEntity;
 import io.reflectoring.buckpal.security.domain.UserRole;
 import io.reflectoring.buckpal.security.util.GsonUtils;
 import java.util.Map;
@@ -16,7 +16,7 @@ public class OAuth2ProviderUser {
 
     private final Map<String, Object> attributes;
     private final String nameAttributeKey;
-    private final KakaoUser kakaoUserInfo;
+    private final KakaoUserInfo kakaoUserInfo;
 
     public static OAuth2ProviderUser of(String userNameAttributeName, Map<String, Object> attributes) {
         return ofKakao(userNameAttributeName, attributes);
@@ -27,14 +27,14 @@ public class OAuth2ProviderUser {
 
         String jsonValue = gson.toJson(attributes);
 
-        KakaoUser kakaoUserInfo = gson.fromJson(jsonValue, KakaoUser.class);
+        KakaoUserInfo kakaoUserInfo = gson.fromJson(jsonValue, KakaoUserInfo.class);
 
         return new OAuth2ProviderUser(attributes, userNameAttributeName, kakaoUserInfo);
     }
 
-    public UserJpaEntity toEntity() {
+    public SecurityUserJpaEntity toEntity() {
         KakaoAccount kakaoAccount = kakaoUserInfo.getKakaoAccount();
-        return new UserJpaEntity(null,
+        return new SecurityUserJpaEntity(
                 kakaoAccount.getProfile().getNickname(),
                 kakaoAccount.getEmail(),
                 kakaoUserInfo.getProperties().getProfileImage(),

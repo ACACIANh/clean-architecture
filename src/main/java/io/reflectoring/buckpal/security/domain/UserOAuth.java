@@ -11,8 +11,8 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 public class UserOAuth implements OAuth2User, Serializable {
 
     private final OAuth2User oAuth2User;
-    private final KakaoUser KakaoUser;
-    private final UserJpaEntity user;
+    private final KakaoUserInfo KakaoUser;
+    private final SecurityUserJpaEntity user;
 
     @Override
     public Map<String, Object> getAttributes() {
@@ -30,6 +30,6 @@ public class UserOAuth implements OAuth2User, Serializable {
     }
 
     public String getIdentifier() {
-        return user.getName();
+        return user.getEmail();
     }
 }

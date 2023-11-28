@@ -21,4 +21,12 @@ It implements a domain-centric "Hexagonal" approach of a common web application 
 ---
 #### TODO list
 * JwtAuthenticationFilter - 토큰으로 요청들어올때 db 로직타지 않게 제거
-* UserJpaEntity - entity 모델 분리, 도메인별 어떻게 사용할지 고민하기
+* DB 초기화시 회원가입 되었던 user 데이터 넣기
+* Security package 모델 정리
+
+#### DONE - 최신 역순
+* Java17 SpringBoot3 migration
+* Security Setting
+* Swagger Setting
+* Controller 에서 Principal 및 SecurityContextHolder 확인 
+* UserJpaEntity - Entity 모델 분리

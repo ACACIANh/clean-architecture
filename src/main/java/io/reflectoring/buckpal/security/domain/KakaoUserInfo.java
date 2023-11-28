@@ -3,7 +3,7 @@ package io.reflectoring.buckpal.security.domain;
 import lombok.Data;
 
 @Data
-public class KakaoUser {
+public class KakaoUserInfo {
     private long id;
     private String connectedAt;
     private Properties properties;

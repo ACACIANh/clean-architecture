@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class SecurityUserService {
 
-    private final UserRepository userRepository;
+    private final SecurityUserRepository userRepository;
 
-    public Optional<UserJpaEntity> findByEmail(String email) {
+    public Optional<SecurityUserJpaEntity> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 }

@@ -2,8 +2,8 @@ package io.reflectoring.buckpal.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
-import io.reflectoring.buckpal.security.domain.UserJpaEntity;
-import io.reflectoring.buckpal.security.domain.UserService;
+import io.reflectoring.buckpal.security.domain.SecurityUserJpaEntity;
+import io.reflectoring.buckpal.security.domain.SecurityUserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,7 +24,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final String[] excludedUrls;
-    private final UserService userService;
+    private final SecurityUserService userService;
     private final JwtProvider jwtProvider;
 
     @Override
@@ -41,7 +41,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             Jws<Claims> validateToken = jwtProvider.validateToken(token);
             Claims claims = validateToken.getBody();
             String email = claims.getSubject();
-            UserJpaEntity user = userService.findByEmail(email)
+
+            SecurityUserJpaEntity user = userService.findByEmail(email)
                     .orElseThrow(() -> new IllegalStateException("NotFoundUser email: " + email));
 
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(

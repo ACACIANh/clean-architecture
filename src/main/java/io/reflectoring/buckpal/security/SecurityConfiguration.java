@@ -1,7 +1,7 @@
 package io.reflectoring.buckpal.security;
 
 import io.reflectoring.buckpal.security.domain.UserRole;
-import io.reflectoring.buckpal.security.domain.UserService;
+import io.reflectoring.buckpal.security.domain.SecurityUserService;
 import io.reflectoring.buckpal.security.jwt.JwtAuthenticationEntryPoint;
 import io.reflectoring.buckpal.security.jwt.JwtAuthenticationFilter;
 import io.reflectoring.buckpal.security.jwt.JwtProvider;
@@ -31,7 +31,7 @@ public class SecurityConfiguration {
 
     private final OAuth2UserService customOAuth2UserService;
     private final JwtProvider jwtProvider;
-    private final UserService userService;
+    private final SecurityUserService userService;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
 
@@ -43,6 +43,9 @@ public class SecurityConfiguration {
             "/js/**",
             "/h2-console/**",
             "/v1/custom/**",
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/swagger-ui.html"
             // 필요시 url 추가
     };
 
