@@ -15,5 +15,10 @@ It implements a domain-centric "Hexagonal" approach of a common web application 
 
 ## Prerequisites
 
-* JDK 11
+* JDK ~~11~~ -> 17
 * this project uses Lombok, so enable annotation processing in your IDE
+
+---
+#### TODO list
+* JwtAuthenticationFilter - 토큰으로 요청들어올때 db 로직타지 않게 제거
+* UserJpaEntity - entity 모델 분리, 도메인별 어떻게 사용할지 고민하기
